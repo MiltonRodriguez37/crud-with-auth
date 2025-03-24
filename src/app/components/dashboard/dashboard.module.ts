@@ -13,6 +13,7 @@ import { IndexComponent } from './index/index.component';
 import { ProductsComponent } from './products/products.component';
 import { UsersComponent } from './users/users.component';
 import { CreateUserComponent } from './users/create-user/create-user.component';
+import { CreateProductComponent } from './products/create-product/create-product.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { CreateUserComponent } from './users/create-user/create-user.component';
     IndexComponent,
     ProductsComponent,
     UsersComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    CreateProductComponent
   ],
   imports: [
     CommonModule,
