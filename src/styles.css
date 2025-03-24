@@ -26,3 +26,23 @@ a{
   text-decoration: none;
   color: #57d3a2;
 }
+
+.container-toolbar{
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+
+.toolbar-button {
+  margin-left: auto;
+  margin-right: 1%;
+  width: 15%;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.fill-field{
+  width: 90%;
+}

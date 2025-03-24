@@ -9,6 +9,7 @@ import { IndexComponent } from './index/index.component';
 import { ProductsComponent } from './products/products.component';
 import { UsersComponent } from './users/users.component';
 import { SharedModule } from '../shared/shared.module';
+import { CreateUserComponent } from './users/create-user/create-user.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { SharedModule } from '../shared/shared.module';
     NavbarComponent,
     IndexComponent,
     ProductsComponent,
-    UsersComponent
+    UsersComponent,
+    CreateUserComponent
   ],
   imports: [
     CommonModule,
