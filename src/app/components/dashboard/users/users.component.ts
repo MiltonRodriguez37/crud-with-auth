@@ -13,7 +13,7 @@ import { UserService } from '../../../services/user.service';
 })
 export class UsersComponent {
   listUsers: User[] = [];
-  displayedColumns: string[] = ['user', 'name', 'lastname', 'gender', 'actions'];
+  displayedColumns: string[] = ['name', 'lastname', 'gender', 'telephone', 'actions'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
