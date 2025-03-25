@@ -1,6 +1,6 @@
 <div class="container-toolbar">
   <mat-toolbar class="custom-toolbar">
-    <span>Crear Producto</span>
+    <span>{{title}}</span>
   </mat-toolbar>
 
   <mat-card appearance="outlined">
@@ -43,9 +43,9 @@
             <mat-form-field class="fill-field">
               <mat-label>Categoría</mat-label>
               <mat-select formControlName="category">
-                <mat-option value="electronics">Electrónicos</mat-option>
-                <mat-option value="sports">Deportes</mat-option>
-                <mat-option value="toys">Juguetes</mat-option>
+                <mat-option value="Electronicos">Electrónicos</mat-option>
+                <mat-option value="Deportes">Deportes</mat-option>
+                <mat-option value="Juguetes">Juguetes</mat-option>
               </mat-select>
               <mat-error *ngIf="form.get('category')?.hasError('required')">
                 La categoría es obligatoria

@@ -1,6 +1,6 @@
 <div class="container-toolbar">
   <mat-toolbar class="custom-toolbar">
-    <span>Crear Usuario</span>
+    <span>{{ title }}</span>
   </mat-toolbar>
 
   <mat-card appearance="outlined">
@@ -43,9 +43,9 @@
             <mat-form-field class="fill-field">
               <mat-label>Género</mat-label>
               <mat-select formControlName="gender">
-                <mat-option value="male">Masculino</mat-option>
-                <mat-option value="female">Femenino</mat-option>
-                <mat-option value="none">Prefiero no decir</mat-option>
+                <mat-option value="Hombre">Masculino</mat-option>
+                <mat-option value="Mujer">Femenino</mat-option>
+                <mat-option value="Nulo">Prefiero no decir</mat-option>
               </mat-select>
               <mat-error *ngIf="form.get('gender')?.hasError('required')">
                 Género es obligatorio

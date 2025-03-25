@@ -44,13 +44,10 @@
           <th mat-header-cell *matHeaderCellDef>Acciones </th>
           <td mat-cell *matCellDef="let element">
             <a class="pointer">
-              <mat-icon style="margin-right: 15px; color: rgb(246, 250, 248);"  matTooltip="Ver producto">visibility</mat-icon>
+              <mat-icon style="margin-right: 15px; color: rgb(58, 143, 253)"  matTooltip="Editar producto" [routerLink]="['/dashboard/edit-product',element._id]">edit</mat-icon>
             </a>
             <a class="pointer">
-              <mat-icon style="margin-right: 15px; color: rgb(58, 143, 253)"  matTooltip="Editar producto">edit</mat-icon>
-            </a>
-            <a class="pointer">
-              <mat-icon style="color: rgb(248, 47, 47);"  matTooltip="Eliminar producto">delete</mat-icon>
+              <mat-icon style="color: rgb(248, 47, 47);"  matTooltip="Eliminar producto" (click)="deleteProduct(element._id)">delete</mat-icon>
             </a>
           </td>
         </ng-container>
@@ -65,6 +62,6 @@
     </div>
   </div>
 
-  <h2 *ngIf="listProducts.length===0" style="color: white; text-align: center; margin-top: 50px;">No hay usuarios para mostrar </h2>
+  <h2 *ngIf="listProducts.length===0" style="color: white; text-align: center; margin-top: 50px;">No hay productos para mostrar </h2>
 
 </div>

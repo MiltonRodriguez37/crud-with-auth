@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { UserService } from '../../../services/user.service';
 import { Product } from '../../../interfaces/product';
 import { ProductService } from '../../../services/product.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -20,20 +21,36 @@ export class ProductsComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-constructor(private _productService: ProductService){}
+constructor(private _productService: ProductService, private toastr:ToastrService){}
 
 ngOnInit():void{
-  this.chargeUsers();
+  this.chargeProducts();
 }
 
-chargeUsers(){
-  this.listProducts = this._productService.getProducts()
-  this.dataSource = new MatTableDataSource(this.listProducts);
+chargeProducts(){
+  this._productService.getProducts().subscribe(data=>{
+    console.log(data);
+    this.listProducts = data;
+    this.dataSource = new MatTableDataSource(this.listProducts);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }, error => {
+    console.log(error);
+  }
+)
+}
+
+deleteProduct(id:any){
+  this._productService.deleteProduct(id).subscribe(data=>{
+    this.toastr.info('El producto se eliminó correctamente', 'Producto eliminado',{positionClass:'toast-bottom-center'});
+    this.chargeProducts();
+  },
+error=>{
+  this.toastr.error('El producto no pudo eliminarse', 'Error',{positionClass:'toast-bottom-center'})
+})
 }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
   }
 
   applyFilter(event: Event) {
