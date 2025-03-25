@@ -1,0 +1,86 @@
+<div class="container-toolbar">
+  <mat-toolbar class="custom-toolbar">
+    <span>Crear Usuario</span>
+  </mat-toolbar>
+
+  <mat-card appearance="outlined">
+
+    <form [formGroup]="form" (ngSubmit)="addUser()">
+      <mat-grid-list cols="2" rowHeight="80px">
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="fill-field">
+            <mat-label>Nombre(s)</mat-label>
+            <input matInput formControlName="name">
+            <mat-error *ngIf="form.get('name')?.hasError('required')">
+              Nombre es obligatorio
+            </mat-error>
+            <mat-error *ngIf="form.get('name')?.hasError('minlength')">
+              Mínimo 2 letras
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="1" [rowspan]="5">
+            <img src="./assets/img/createuser.png" alt="Avatar icon">
+          </mat-grid-tile>
+
+
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field class="fill-field">
+              <mat-label>Apellido(s)</mat-label>
+              <input matInput formControlName="lastname">
+              <mat-error *ngIf="form.get('lastname')?.hasError('required')">
+                Apellido es obligatorio
+              </mat-error>
+              <mat-error *ngIf="form.get('lastname')?.hasError('minlength')">
+                Mínimo 2 letras
+              </mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field class="fill-field">
+              <mat-label>Género</mat-label>
+              <mat-select formControlName="gender">
+                <mat-option value="one">Masculino</mat-option>
+                <mat-option value="two">Femenino</mat-option>
+                <mat-option value="two">Prefiero no decir</mat-option>
+              </mat-select>
+              <mat-error *ngIf="form.get('gender')?.hasError('required')">
+                Género es obligatorio
+              </mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field class="fill-field">
+              <mat-label>Teléfono</mat-label>
+              <input matInput autocomplete="off" formControlName="telephone">
+
+              <mat-error *ngIf="form.get('telephone')?.hasError('required')">
+                Teléfono es obligatorio
+              </mat-error>
+              <mat-error *ngIf="form.get('telephone')?.hasError('pattern')">
+                Solo se permiten números
+              </mat-error>
+              <mat-error *ngIf="form.get('telephone')?.hasError('minlength')">
+                Mínimo 10 dígitos
+              </mat-error>
+              <mat-error *ngIf="form.get('telephone')?.hasError('maxlength')">
+                Máximo 10 dígitos
+              </mat-error>
+
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <button mat-flat-button color="" routerLink="/dashboard/users" style="width: 40%; border: 2px solid white;">Volver</button>
+
+            <button type="submit" [disabled]="form.invalid" mat-flat-button color="accent" style="margin-left: 5%; margin-right: 3% ;width: 40%;" >Aceptar</button>
+          </mat-grid-tile>
+
+      </mat-grid-list>
+    </form>
+  </mat-card>
+</div>

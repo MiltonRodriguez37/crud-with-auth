@@ -1,0 +1,95 @@
+<div class="container-toolbar">
+  <mat-toolbar class="custom-toolbar">
+    <span>Crear Producto</span>
+  </mat-toolbar>
+
+  <mat-card appearance="outlined">
+
+    <form [formGroup]="form" (ngSubmit)="addProduct()">
+      <mat-grid-list cols="2" rowHeight="80px">
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="fill-field">
+            <mat-label>Nombre del producto</mat-label>
+            <input matInput formControlName="product">
+            <mat-error *ngIf="form.get('product')?.hasError('required')">
+              El nombre es obligatorio
+            </mat-error>
+            <mat-error *ngIf="form.get('product')?.hasError('minlength')">
+              Mínimo 2 letras
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="1" [rowspan]="6">
+            <img src="./assets/img/createproduct.png" alt="Product icon" width="60%">
+          </mat-grid-tile>
+
+
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field class="fill-field">
+              <mat-label>Descripción del producto</mat-label>
+              <input matInput formControlName="description">
+              <mat-error *ngIf="form.get('description')?.hasError('required')">
+                La descripción es obligatoria
+              </mat-error>
+              <mat-error *ngIf="form.get('description')?.hasError('minlength')">
+                Mínimo 2 letras
+              </mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field class="fill-field">
+              <mat-label>Categoría</mat-label>
+              <mat-select formControlName="category">
+                <mat-option value="one">Electrónicos</mat-option>
+                <mat-option value="two">Deportes</mat-option>
+                <mat-option value="two">Juguetes</mat-option>
+              </mat-select>
+              <mat-error *ngIf="form.get('category')?.hasError('required')">
+                La categoría es obligatoria
+              </mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field class="fill-field">
+              <mat-label>Precio</mat-label>
+              <input matInput autocomplete="off" formControlName="price">
+
+              <mat-error *ngIf="form.get('price')?.hasError('required')">
+                El precio es obligatorio
+              </mat-error>
+              <mat-error *ngIf="form.get('price')?.hasError('pattern')">
+                Solo se permiten números
+              </mat-error>
+
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field class="fill-field">
+              <mat-label>Cantidad</mat-label>
+              <input matInput autocomplete="off" formControlName="stock">
+
+              <mat-error *ngIf="form.get('stock')?.hasError('required')">
+                La cantidad es obligatoria
+              </mat-error>
+              <mat-error *ngIf="form.get('stock')?.hasError('pattern')">
+                Solo se permiten números
+              </mat-error>
+
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <button mat-flat-button color="" routerLink="/dashboard/products" style="width: 40%; border: 2px solid white;">Volver</button>
+
+            <button type="submit" [disabled]="form.invalid" mat-flat-button color="accent" style="margin-left: 5%; margin-right: 3% ;width: 40%;" >Aceptar</button>
+          </mat-grid-tile>
+
+      </mat-grid-list>
+    </form>
+  </mat-card>
+</div>

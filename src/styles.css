@@ -1,0 +1,53 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%;   background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(82,0,132,1) 100%, rgba(184,0,255,1) 100%, rgba(73,9,121,1) 100%);}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo{
+  width: 50%;
+}
+
+.input-width{
+  width: 90%;
+}
+
+.button{
+  height:50px;
+}
+
+a{
+  text-decoration: none;
+  color: #57d3a2;
+}
+
+.container-toolbar{
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+
+.toolbar-button {
+  margin-left: auto;
+  margin-right: 1%;
+  width: 15%;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.fill-field{
+  width: 90%;
+  margin-right: 20px;
+}
+
+.pointer{
+  cursor: pointer;
+}

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Frontend (Angular)
 frontend/node_modules/
 frontend/dist/
@@ -12,3 +13,6 @@ server/logs/
 .DS_Store
 .idea
 *.log
+=======
+
+
