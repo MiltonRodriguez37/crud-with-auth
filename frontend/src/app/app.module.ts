@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { LoginComponent } from './components/login/login.component';
 import { SharedModule } from './components/shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,7 @@ import { SharedModule } from './components/shared/shared.module';
   imports: [BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-  SharedModule, HttpClientModule],
+  SharedModule, HttpClientModule,ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })

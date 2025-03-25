@@ -16,6 +16,7 @@ export class UsersComponent {
   listUsers: User[] = [];
   displayedColumns: string[] = ['name', 'lastname', 'gender', 'telephone', 'actions'];
   dataSource!: MatTableDataSource<any>;
+  isLoading = true;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -27,24 +28,29 @@ ngOnInit():void{
 }
 
 chargeUsers(){
+  this.isLoading = true;
   this._userService.getUsers().subscribe(data=>{
     console.log(data)
     this.listUsers = data;
     this.dataSource = new MatTableDataSource(this.listUsers);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.isLoading = false;
   }, error => {
+    this.isLoading = false;
     console.log(error);
   }
   )
 }
 
 deleteUser(id:any){
+  this.isLoading = true;
   this._userService.deleteUser(id).subscribe(data=>{
     this.toastr.info('El usuario se eliminó correctamente', 'Usuario eliminado',{positionClass:'toast-bottom-center'});
     this.chargeUsers();
   },
 error=>{
+  this.isLoading = false;
   this.toastr.error('El usuario no pudo eliminarse', 'Error',{positionClass:'toast-bottom-center'})
 })
 }

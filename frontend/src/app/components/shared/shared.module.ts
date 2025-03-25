@@ -16,6 +16,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [],
@@ -33,6 +34,7 @@ import { ToastrModule } from 'ngx-toastr';
     MatCardModule,
     MatGridListModule,
     MatSelectModule,
+    MatProgressSpinnerModule,
     ToastrModule.forRoot(),
   ],
   exports: [
@@ -48,7 +50,7 @@ import { ToastrModule } from 'ngx-toastr';
     MatCardModule,
     MatGridListModule,
     MatSelectModule,
-
+    MatProgressSpinnerModule
   ]
 })
 export class SharedModule { }

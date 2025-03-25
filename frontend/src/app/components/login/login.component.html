@@ -2,16 +2,31 @@
   <div class="login">
     <img class="logo" src="../../../assets/img/user.png" alt="user logo">
     <h1>Login</h1>
-    <mat-form-field class="input-width" appearance="fill" color="accent">
-      <mat-label>Usuario</mat-label>
-      <input matInput autocomplete="off">
-    </mat-form-field>
-    <mat-form-field class="input-width" appearance="fill" color="accent">
-      <mat-label>Contraseña</mat-label>
-      <input matInput autocomplete="off">
-    </mat-form-field>
+    <form [formGroup]="form" (ngSubmit)="goDashboard()">
+      <mat-form-field class="input-width" appearance="fill" color="accent">
+        <mat-label>Usuario</mat-label>
+        <input matInput autocomplete="off" formControlName="user">
+        <mat-error *ngIf="form.get('user')?.hasError('required')">
+          Usuario es obligatorio
+        </mat-error>
+        <mat-error *ngIf="form.get('user')?.hasError('minlength')">
+          Mínimo 4 caracteres
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="input-width" appearance="fill" color="accent">
+        <mat-label>Contraseña</mat-label>
+        <input matInput autocomplete="off" formControlName="password" type="password">
+        <mat-error *ngIf="form.get('password')?.hasError('required')">
+          Contraseña es obligatoria
+        </mat-error>
+        <mat-error *ngIf="form.get('password')?.hasError('minlength')">
+          Mínimo 6 caracteres
+        </mat-error>
+      </mat-form-field>
 
-    <button mat-flat-button color="accent" class="input-width button" routerLink="/dashboard">Ingresar</button>
+      <button mat-flat-button color="accent" class="input-width button" type="submit" [disabled]="form.invalid">Ingresar</button>
+    </form>
+
     <p style="margin-top: 20px;">¿No tienes cuenta? <a routerLink="/signin">Regístrate aquí</a></p>
   </div>
 </div>

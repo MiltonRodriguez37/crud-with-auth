@@ -1,28 +1,65 @@
-<div class="container">
+fom<div class="container">
   <div class="signin">
     <img class="logo" src="../../../assets/img/signin.png" alt="user logo">
     <h1>Registro de usuario</h1>
-    <mat-form-field class="input-width" appearance="fill" color="accent">
-      <mat-label>Nombre(s)</mat-label>
-      <input matInput autocomplete="off">
-    </mat-form-field>
-    <mat-form-field class="input-width" appearance="fill" color="accent">
-      <mat-label>Apellido(s)</mat-label>
-      <input matInput autocomplete="off">
-    </mat-form-field>
-    <mat-form-field class="input-width" color="accent">
-      <mat-label>Nombre de usuario</mat-label>
-      <input matInput autocomplete="off">
-    </mat-form-field>
-    <mat-form-field class="input-width" color="accent">
-      <mat-label>Contraseña</mat-label>
-      <input matInput autocomplete="off" type="password">
-    </mat-form-field>
-    <mat-form-field class="input-width" appearance="fill" color="accent">
-      <mat-label>Repetir contraseña</mat-label>
-      <input matInput autocomplete="off" type="password">
-    </mat-form-field>
-    <button mat-flat-button color="accent" class="input-width button" routerLink="/dashboard">Registrarse</button>
+    <form [formGroup]="form" (ngSubmit)="goLogin()">
+      <mat-form-field class="input-width" appearance="fill" color="accent">
+        <mat-label>Nombre(s)</mat-label>
+        <input matInput autocomplete="off" formControlName="name">
+        <mat-error *ngIf="form.get('name')?.hasError('required')">
+          Nombre es obligatorio
+        </mat-error>
+        <mat-error *ngIf="form.get('name')?.hasError('minlength')">
+          Mínimo 2 caracteres
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="input-width" appearance="fill" color="accent">
+        <mat-label>Apellido(s)</mat-label>
+        <input matInput autocomplete="off" formControlName="lastname">
+        <mat-error *ngIf="form.get('lastname')?.hasError('required')">
+          Apellido es obligatorio
+        </mat-error>
+        <mat-error *ngIf="form.get('lastname')?.hasError('minlength')">
+          Mínimo 2 caracteres
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="input-width" color="accent">
+        <mat-label>Nombre de usuario</mat-label>
+        <input matInput autocomplete="off" formControlName="user">
+        <mat-error *ngIf="form.get('user')?.hasError('required')">
+          Usuario es obligatorio
+        </mat-error>
+        <mat-error *ngIf="form.get('user')?.hasError('minlength')">
+          Mínimo 4 caracteres
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="input-width" color="accent">
+        <mat-label>Contraseña</mat-label>
+        <input matInput autocomplete="off" type="password" formControlName="password">
+        <mat-error *ngIf="form.get('password')?.hasError('required')">
+          Contraseña es obligatoria
+        </mat-error>
+        <mat-error *ngIf="form.get('password')?.hasError('minlength')">
+          Mínimo 6 caracteres
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="input-width" appearance="fill" color="accent">
+        <mat-label>Repetir contraseña</mat-label>
+        <input matInput autocomplete="off" type="password" formControlName="passwordAgain">
+        <mat-error *ngIf="form.get('passwordAgain')?.hasError('required')">
+          Campo obligatorio
+        </mat-error>
+        <mat-error *ngIf="form.get('passwordAgain')?.hasError('minlength')">
+          Mínimo 6 caracteres
+        </mat-error>
+
+        <mat-error *ngIf="form.get('passwordAgain')?.hasError('mismatch')">
+          Las contraseñas no coinciden
+        </mat-error>
+
+      </mat-form-field>
+      <button mat-flat-button color="accent" class="input-width button" type="submit" [disabled]="form.invalid">Registrarse</button>
+    </form>
     <p style="margin-top: 20px;">¿Ya tienes cuenta? <a routerLink="/login">Regresar</a></p>
   </div>
 </div>
