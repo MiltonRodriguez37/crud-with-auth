@@ -25,5 +25,6 @@ app.get('*', (req, res) => {
 });
 
 app.listen(port, ()=>{
-  console.log('El servidor está corriendo')
+  console.log('El servidor está corriendo');
+  console.log('Variable MONGO_URI:', process.env.MONGO_URI?.substring(0, 25) + '...');
 })

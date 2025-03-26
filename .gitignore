@@ -8,6 +8,7 @@ frontend/.angular/
 server/node_modules/
 server/.env
 server/logs/
+.env
 
 # General
 .DS_Store
