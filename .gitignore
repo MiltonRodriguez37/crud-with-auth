@@ -16,6 +16,4 @@ server/logs/
 *.log
 =======
 
-
-.env
-.env
+server/variables.env
