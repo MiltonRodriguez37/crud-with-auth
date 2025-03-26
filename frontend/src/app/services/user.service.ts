@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  url = 'http://localhost:4000/api/users/';
+  url = 'http://localhost:8080/api/users/';
 /*     listUsers: User[] = [
       {name: 'Milton Osvaldo', lastname: 'Rodríguez González', gender: 'Femenino', telephone: '3315897034'},
       {name: 'Milton Osvaldo', lastname: 'Rodríguez González', gender: 'Femenino', telephone: '3315897034'},
