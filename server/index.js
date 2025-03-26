@@ -11,15 +11,17 @@ app.use(cors());
 
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, '../frontend/dist/frontend')));
+const staticPath = path.join(__dirname, '../frontend/dist/frontend/browser');
+console.log('Serviendo archivos desde:', staticPath);
 
-app.use('/assets', express.static(path.join(__dirname, '../frontend/dist/frontend/assets')));
+app.use(express.static(staticPath));
+app.use('/assets', express.static(path.join(staticPath, 'assets')));
 
 app.use('/api/products', require('./routes/product'))
 app.use('/api/users', require('./routes/user'))
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/dist/frontend/index.html'));
+  res.sendFile(path.join(staticPath, 'index.html'));
 });
 
 app.listen(port, ()=>{
