@@ -4,6 +4,8 @@
   "description": "MEAN API",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
+    "build": "npm install",
     "dev": "nodemon ."
   },
   "author": "Milton Rodriguez",
